@@ -4,8 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do list</title>
+    
 </head>
 <body>
-    <h1>It's a <%= kindOfDay%></h1>
+    <h1><%= kindOfDay %></h1>
+    <ul>
+        
+        <% for(let i=0;i<variable.length;i++){ %>
+            <li><%= variable[i] %></li>
+        <% } %>
+
+        <form id="myForm" action="/" method="post">
+            <label for="inputField">Enter something:</label>
+            <input type="text" id="inputField" name="inputField" required>
+            <input type="submit" value="Add">
+        </form>
+    </ul>
 </body>
-</html>
+</html> 
