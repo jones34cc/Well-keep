@@ -1,16 +1,17 @@
 const express = require("express");
 const bodyparser=require("body-parser");
 
-var arr=["Brush","Bath","Breakfast"];
+let arr=[];
 
 const app=express();
 app.set('view engine', 'ejs');
 app.use(bodyparser.urlencoded({extended:true}));
+app.use(express.static("public"));
 
 
 app.get("/",function(req,res)
 {
-    var today=new Date();
+    let today=new Date();
     const options = { 
         weekday: 'long', 
         year: 'numeric', 
@@ -20,13 +21,13 @@ app.get("/",function(req,res)
     const detailedDate = today.toLocaleDateString('en-US', options);
    
 
-    res.render("list",{kindOfDay:detailedDate,variable:arr});
+    res.render("list",{kindOfDay:detailedDate,tasks:arr});
     
 })
 
 app.post("/",function(req,res)
 {
-    var item=req.body.inputField;
+    let item=req.body.inputField;
     arr.push(item);
     res.redirect("/");
 })
