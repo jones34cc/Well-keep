@@ -3,23 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css\styles.css">
-    <title>To do list</title>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>VALORANT To-Do List</title>
 </head>
 <body>
-    <h1 style="text-align: center;"><%= kindOfDay %></h1>
-    <ul>
+    <div class="container">
+        <div class="valorant-header">
+            <h1 class="app-title">Tactical Task Manager</h1>
+            <div class="radiant-line"></div>
+        </div>
         
-        <% for(let i=0;i<variable.length;i++){ %>
-            <li><%= variable[i] %></li>
-        <% } %>
+        <div class="todo-wrapper">
+            <form class="todo-form" action="/" method="post">
+                <div class="input-group">
+                    <input type="text" 
+                           id="inputField" 
+                           name="inputField" 
+                           placeholder="Enter tactical objective..."
+                           required>
+                    <button type="submit" class="add-btn">
+                        <i class="fas fa-crosshairs"></i> DEPLOY OBJECTIVE
+                    </button>
+                </div>
+            </form>
 
-        <form id="myForm" action="/" method="post">
-            <label for="inputField">Enter something:</label>
-            <input type="text" id="inputField" name="inputField" required>
-            <input type="submit" value="Add">
-        </form>
-    </ul>
+            <ul class="todo-list">
+                <% for(let i = 0; i < tasks.length; i++) { %>
+                    <li class="todo-item">
+                        <div class="radianite-glow"></div>
+                        <span class="task-text"><%= tasks[i] %></span>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
 </body>
-</html> 
+</html>
