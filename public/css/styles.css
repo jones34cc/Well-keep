@@ -106,7 +106,7 @@ body::before {
 .todo-item {
     display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.05);
+    background: transparent;
     margin: 10px 0;
     padding: 10px;
     border-radius: 5px;
@@ -138,3 +138,47 @@ body::before {
     color: var(--secondary-color);
     transform: scale(1.2);
 }
+
+.todo-item {
+    position: relative;
+    list-style: none;
+    padding: 12px;
+    margin: 8px 0;
+    background: transparent;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  
+  .todo-item input[type="checkbox"] {
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .task-text {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  /* Strikethrough effect when checked */
+  .todo-item input[type="checkbox"]:checked + .task-text {
+    text-decoration: line-through;
+    color: #888; /* Optional: change text color when checked */
+    text-decoration-thickness: 2px; /* Thickness of the strikethrough line */
+  }
+  
+  /* Optional: Add animation effect */
+  .todo-item input[type="checkbox"]:checked + .task-text::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 2px;
+    background: #666;
+    animation: strike 0.3s ease-out forwards;
+  }
+  
+  @keyframes strike {
+    from { width: 0; }
+    to { width: 100%; }
+  }
